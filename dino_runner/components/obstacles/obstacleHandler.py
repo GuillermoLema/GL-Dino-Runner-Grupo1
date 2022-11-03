@@ -1,8 +1,8 @@
+import pygame
 from utils.constants import SMALL_CACTUS
 from components.obstacles.cactus import Cactus
-import pygame
 
-class obstacleHandler():
+class ObstacleHandler():
     def __init__(self):
         self.obstacles = []
     
@@ -13,10 +13,9 @@ class obstacleHandler():
         for obstacle in self.obstacles:
             obstacle.update(speed)
             if dino.image_rect.colliderect(obstacle.image_rect):
-                
                 pygame.time.delay(200)
                 self.obstacles.pop()
-            
+                
             if obstacle.image_rect.x < -obstacle.image_rect.width:
                 self.obstacles.pop()
     

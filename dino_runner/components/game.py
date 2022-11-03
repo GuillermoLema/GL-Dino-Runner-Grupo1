@@ -1,10 +1,10 @@
 import pygame
 
-from dino_runner.utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
+from utils.constants import BG, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, TITLE, FPS
 
-from  dino_runner.components.dinosuar import Dinosuar
-from components.obstacles.obstacleHandler import obstacleHandler
-
+from components.dinosuar import Dinosuar
+from components.obstacles.obstacleHandler import ObstacleHandler
+from utils import text_utils
 
 class Game:
     def __init__(self):
@@ -14,11 +14,12 @@ class Game:
         self.screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
         self.clock = pygame.time.Clock()
         self.dinosaur = Dinosuar()
-        self.obstacleHandler = obstacleHandler()
+        self.obstacleHandler = ObstacleHandler()
         self.playing = False
         self.game_speed = 20
         self.x_pos_bg = 0
         self.y_pos_bg = 380
+        self.points = 0
 
     def run(self):
         # Game loop: events - update - draw
@@ -45,6 +46,7 @@ class Game:
         self.draw_background()
         self.dinosaur.draw(self.screen)
         self.obstacleHandler.draw(self.screen)
+        self.draw_score()
         pygame.display.update()
         pygame.display.flip()
 
@@ -56,3 +58,9 @@ class Game:
             self.screen.blit(BG, (image_width + self.x_pos_bg, self.y_pos_bg))
             self.x_pos_bg = 0
         self.x_pos_bg -= self.game_speed
+        
+    def draw_score(self):
+        self.points += 1
+        message = "points: " + str(self.points)
+        points_text, points_rect = text_utils.get_text_element(message, SCREEN_WIDTH-80, 30, 20)
+        self.screen.blit(points_text, points_rect)

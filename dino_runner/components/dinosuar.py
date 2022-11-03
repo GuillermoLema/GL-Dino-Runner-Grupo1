@@ -1,6 +1,7 @@
-from urllib.parse import SplitResultBytes
 
 import pygame
+from urllib.parse import SplitResultBytes
+
 from pygame.sprite import Sprite
 from utils.constants import JUMPING, RUNNING
 
@@ -8,12 +9,12 @@ from utils.constants import JUMPING, RUNNING
 class Dinosuar(Sprite):
     
     DINO_X_POS = 50
-    DINO_Y_POS = 300
+    DINO_Y_POS = 315
     INITIAL_STEP = 0 
     MAX_STEP = 10
     ACELERATION = 4
     REDUCE_VELOCITY = 0.9
-    INITIAL_VELOCITY = 20
+    INITIAL_VELOCITY = 10
     
     def __init__(self):
         self.image = RUNNING[0]
@@ -34,9 +35,7 @@ class Dinosuar(Sprite):
         if dino_event[pygame.K_UP] and not self.dino_jump:
             self.dino_run = False
             self.dino_jump = True
-        else:
-            self.dino_jump = False
-            self.dino_run = True
+
             
         if self.step > self.MAX_STEP:
            self.step = self.INITIAL_STEP
