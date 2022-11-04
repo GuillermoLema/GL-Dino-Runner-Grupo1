@@ -90,7 +90,6 @@ class Game:
         self.x_pos_bg -= self.game_speed
         
     def draw_score(self):
-        
         message = "points: " + str(self.points)
         points_text, points_rect = text_utils.get_text_element(message, SCREEN_WIDTH-80, 30, 20)
         self.screen.blit(points_text, points_rect)
@@ -124,10 +123,12 @@ class Game:
     def show_menu_options(self):
         white_color = (255, 255, 255)
         if self.points > 0:
-
             text, text_rect = text_utils.get_text_element(self.GAME_OVER_TEXT, font_size=40, font_color=white_color)
         else:
             text, text_rect = text_utils.get_text_element("press any key to start", font_size=40, font_color=white_color)
         self.screen.blit(text, text_rect)
+        
+
+        
         
     

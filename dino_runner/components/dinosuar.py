@@ -1,4 +1,4 @@
-
+from utils.constants import DEAD
 import pygame
 from urllib.parse import SplitResultBytes
 
@@ -26,6 +26,7 @@ class Dinosuar(Sprite):
         self.dino_run = True
         self.dino_bend = False
         self.dino_velocity = self.INITIAL_VELOCITY
+        self.dino_dead = False
 
     def update(self, dino_event):
         if self.dino_jump:
@@ -45,11 +46,12 @@ class Dinosuar(Sprite):
             self.dino_jump = False
             self.dino_bend = True
             
+            
         elif not self.dino_jump:
             self.dino_run = True
             self.dino_jump = False
             self.dino_bend = False
-
+            
             
         if self.step > self.MAX_STEP:
            self.step = self.INITIAL_STEP
@@ -82,10 +84,15 @@ class Dinosuar(Sprite):
         self.image_rect.y = self.DINO_Y_POS + 40
         self.step += 1
 
-        
-        
+    def die(self):
     
+            self.image = DEAD
+            self.dino_run = False
+            self.dino_jump = False
+            self.dino_bend = False        
+            
     def draw(self, screen):
         screen.blit(self.image, (self.image_rect.x, self.image_rect.y))
+
         
         
