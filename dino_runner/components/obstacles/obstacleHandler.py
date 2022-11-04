@@ -21,14 +21,11 @@ class ObstacleHandler():
         for obstacle in self.obstacles:
             obstacle.update(game.game_speed)
             if game.dinosaur.image_rect.colliderect(obstacle.image_rect):
-                # game.dinosaur.dino_dead = True
                 game.dinosaur.die()
                 game.dinosaur.draw(game.screen)
                 pygame.time.delay(200)
                 self.obstacles.pop()
                 game.lives -= 1
-                # if game.lives == 0:
-                #     game.dinosaur.dino_dead = True
                 
                 
             if obstacle.image_rect.x < -obstacle.image_rect.width:

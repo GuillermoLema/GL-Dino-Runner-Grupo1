@@ -15,11 +15,11 @@ class Decoration_Handler():
         if len(self.hearts) < game.lives:
             for live in range(game.lives):
                 if len(self.hearts) == 0:
-                
+                    
                     self.hearts.append(Heart(HEART))
                 else:
                     last_position = self.hearts[-1].image_rect.x + self.hearts[-1].image_rect.width
-                    self.hearts.append(Heart(HEART, last_position  ))
+                    self.hearts.append(Heart(HEART, last_position))
         if len(self.hearts) > game.lives:
             self.hearts.pop()
            
