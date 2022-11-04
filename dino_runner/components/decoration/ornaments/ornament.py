@@ -1,9 +1,9 @@
 from pygame.sprite import Sprite
 from utils.constants import SCREEN_WIDTH
 
-class Obstacle(Sprite):
-    def __init__(self, images, index, x_pos = SCREEN_WIDTH):
-        self.image=images[index]
+class Ornament(Sprite):
+    def __init__(self, image, x_pos = SCREEN_WIDTH):
+        self.image=image
         self.image_rect = self.image.get_rect()
         self.image_rect.x = x_pos
     
